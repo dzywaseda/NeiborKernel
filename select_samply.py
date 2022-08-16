@@ -184,15 +184,13 @@ def calculate(it):
 		if x >= samples:
 			break
 
-	for it in range(train_sample_type):
+	for index,item in enumerate(y_train):
 		it = it + 2
-		x = 0
-		for index,item in enumerate(y_train):
-			if item==it:
-				x = x + 1
-				deadlist.append(index)
-			if x >= train_samples:
-				break
+		if item==it:
+			x = x + 1
+			deadlist.append(index)
+		if x >= train_samples:
+			break
 
 	X_train = X_train[deadlist,:,:,:]
 	y_train = y_train[deadlist]
@@ -230,7 +228,8 @@ def calculate(it):
 			for item in sorts:
 				keyname = keyname + str(item) + ":"
 			if keyname[:-1] not in H.keys():
-				H[keyname[:-1]] = xz(X[i], X[j], L[i], L[j], iL[i], iL[j])
+				re = xz(X[i], X[j], L[i], L[j], iL[i], iL[j])
+				H[keyname[:-1]] = re
 			print(H)  
 
 calculate(0)      
