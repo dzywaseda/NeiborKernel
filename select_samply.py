@@ -229,6 +229,7 @@ def calculate(it):
 				keyname = keyname + str(item) + ":"
 			if keyname[:-1] not in H.keys():
 				re = xz(X[i], X[j], L[i], L[j], iL[i], iL[j])
+				print(re)
 				H[keyname[:-1]] = re
 			print(H)  
 
